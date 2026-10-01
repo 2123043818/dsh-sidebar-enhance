@@ -76,7 +76,24 @@ AI 用 `browser_navigate` 打开网页（左：DSH 对话流；右：侧栏浏�
 
 ## 安装
 
+**方式一（推荐）：DSH 里直接装**
+
+DSH 桌面端 → **插件 → 添加插件**，填入：
+
+```
+https://github.com/2123043818/dsh-sidebar-enhance
+```
+
+点安装即可 —— DSH 会从本仓库拉取（若拉取慢/失败，也可以直接填 Release 里的安装包直链）：
+
+```
+https://github.com/2123043818/dsh-sidebar-enhance/releases/download/v0.2.0/dsh-sidebar-enhance-0.2.0.tgz
+```
+
+**方式二：从源码装（开发者）**
+
 ```bash
+git clone https://github.com/2123043818/dsh-sidebar-enhance.git
 dsh plugin --profile desktop add link:/absolute/path/to/dsh-sidebar-enhance
 ```
 
@@ -150,6 +167,18 @@ dsh plugin --profile desktop remove dsh-sidebar-enhance
 ```bash
 npm run check   # 语法检查
 npm test        # 三套测试（不用起 dsh，在 Node 里造假 window/React 真跑一遍）
+npm pack        # 打安装包（产物 dist/dsh-sidebar-enhance-<version>.tgz，发 Release 用）
+```
+
+### 发新版本
+
+```bash
+# 1. 改 package.json 的 version
+# 2. 提交 + 打 tag + 推送
+git add -A && git commit -m "release: v0.x.0"
+git tag v0.x.0 && git push && git push origin v0.x.0
+# 3. npm pack，然后在 GitHub Releases 页面起草新 Release 并上传 dist/*.tgz
+npm pack --pack-destination dist
 ```
 
 结构：

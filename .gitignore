@@ -11,3 +11,4 @@ logs/
 .idea/
 .DS_Store
 Thumbs.db
+dist/
