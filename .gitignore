@@ -1,0 +1,13 @@
+node_modules/
+logs/
+*.log
+
+# 本地开发遗留：备份文件不进仓库
+*.bak
+*.bak-*
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

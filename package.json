@@ -1,0 +1,67 @@
+{
+  "name": "dsh-sidebar-enhance",
+  "version": "0.2.0",
+  "description": "给 DeepSeek Harness 桌面端的自带右侧栏加两件事：Agent 交付成果时主动展开侧栏；侧栏那个浏览器 tab 真的交给 Agent 用（读页面 / 找元素 / 点击输入，全程用户授权）。",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "sidebar-right",
+    "sidebar",
+    "browser-bridge",
+    "ai-browser",
+    "workspace-changes"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/*.js",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "docs/"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "check": "node --check lib/client.js && node --check lib/index.js && node --check lib/browser.js",
+    "test": "node tests/smoke.mjs && node tests/reveal.test.mjs && node tests/host.test.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "react",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-chat",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-sidebar-right",
+        "@deepseek-ai/dsh-client-shortcuts"
+      ],
+      "platform": "web"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "react": "^18.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<your-name>/dsh-sidebar-enhance.git"
+  },
+  "bugs": {
+    "url": "https://github.com/<your-name>/dsh-sidebar-enhance/issues"
+  },
+  "homepage": "https://github.com/<your-name>/dsh-sidebar-enhance#readme"
+}

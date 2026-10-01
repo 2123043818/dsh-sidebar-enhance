@@ -1,0 +1,6 @@
+# dsh-sidebar-enhance bundle patch: inserts its client entry into the web plugin roster.
+# 整个功能只跑在浏览器半侧——读取会话事件流、折叠出每个 Turn 的产出，
+# 再驱动 dsh 自带右侧栏（files / terminal / browser / changes-review）。
+- insert:
+    - id: dsh-sidebar-enhance
+      name: 'dsh-sidebar-enhance'
