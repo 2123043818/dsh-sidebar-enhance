@@ -32,6 +32,9 @@
 
 插件**不搞「每轮结束自动弹」** —— 那既打扰用户，也会和你刚关掉侧栏的意图打架。
 
+![Agent 交付成果时，侧栏自动展开展示文件](assets/screenshot-reveal.jpg)
+*Agent 写完一份 E2E 自检清单后，侧栏自动展开把文件摆到眼前 —— 不用你自己去点。*
+
 ### 2. 浏览器桥（工具 `browser_*`）
 
 侧栏的「浏览器」tab 在桌面端是**真的 Electron `<webview>`**。官方只暴露导航 API，
@@ -48,6 +51,14 @@
 
 **没有截图工具**：官方 AI 侧拿不到附件通道，而且纯文本模型看不了图 ——
 观察靠结构化 DOM 更划算。
+
+AI 用 `browser_navigate` 打开网页（左：DSH 对话流；右：侧栏浏览器真实渲染）：
+
+![AI 用侧栏浏览器导航到 GitHub](assets/screenshot-browser-github.jpg)
+
+点击链接后**在原 tab 原地跳转**，不打扰你正在看的页面：
+
+![原地跳转到 GitHub Security Lab](assets/screenshot-browser-securitylab.jpg)
 
 ### ★ 两组工具都能打开网页 —— 但它们是两条路
 
@@ -90,6 +101,9 @@ dsh plugin --profile desktop remove dsh-sidebar-enhance
 
 **导航不需要授权**（那只是打开一个你看得见的页面）；**读页面 / 交互需要**。
 需要时插件弹出拦截页，三个按钮：
+
+![三按钮授权拦截页：允许此次 / 始终允许本会话 / 不允许](assets/screenshot-consent.jpg)
+*AI 想读页面时会先弹这个 —— 三个选择，语义一目了然。*
 
 | 用户选择 | 效果 |
 |---|---|
