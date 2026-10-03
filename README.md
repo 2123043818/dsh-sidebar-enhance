@@ -4,7 +4,18 @@
 
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/2123043818/dsh-sidebar-enhance)
 
-**能力分类**：工具与能力 ｜ **许可证**：MIT ｜ **适配**：DSH 桌面端（0.2.0-rc2 客户端实测可用）｜ **依赖**：无外部服务、纯本地
+**能力分类**：工具与能力 ｜ **许可证**：MIT ｜ **依赖**：无外部服务、纯本地
+
+### 版本兼容
+
+| DSH 版本 | 状态 | 说明 |
+|---|---|---|
+| **桌面端 0.2.0-rc2**（官方） | ✅ **完整支持** | 开发与实测环境：侧栏展示 + 浏览器桥全部功能 |
+| **0.1.7-rc2 底**（社区 Linux 套壳） | ✅ 侧栏展示可用 | 社区自建的 Linux 壳实测可正常展开侧栏、展示成果；浏览器桥依赖 Electron `<webview>`，是否可用取决于壳的实现 |
+| `dsh web`（网页端） | ⚠️ 部分 | 侧栏展示可用；浏览器桥不可用（没有 `<webview>`） |
+
+> 一句话：**只要 DSH 有那个侧栏，展示功能就能用**；浏览器桥额外要求侧栏浏览器 tab 是 Electron
+> `<webview>`。官方目前没有 Linux 版，上表的 0.1.7-rc2 是社区自建套壳的实测结果，非官方支持。
 
 对 DSH 官方客户端**本体侧栏**做两处增强（不新建侧栏、不复制 UI、不碰模型）：
 
@@ -114,6 +125,9 @@ dsh plugin --profile desktop add link:/absolute/path/to/dsh-sidebar-enhance
 ```
 
 装好后**完全退出桌面端（含托盘）再启动** —— 刷新页面不够。
+
+> Linux 用户可以照装：官方暂无 Linux 版，社区自建的套壳（0.1.7-rc2 底）实测本插件的侧栏展示功能可用，
+> 见上文「版本兼容」。安装命令把 `--profile desktop` 换成你那个壳使用的 profile 名即可。
 
 > 插件分两半：
 > - `lib/client.js`（浏览器半侧）：刷新页面 / dev watcher 就会重新加载；

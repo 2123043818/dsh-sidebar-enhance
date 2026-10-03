@@ -42,13 +42,14 @@ https://github.com/2123043818/dsh-sidebar-enhance
 dsh plugin --profile desktop add github:2123043818/dsh-sidebar-enhance
 
 ### 兼容与运行要求
-- DSH 桌面端 0.2.0-rc2 客户端实测可用（Windows）
-- 侧栏浏览器桥依赖 Electron `<webview>`，仅在**桌面端**可用；`dsh web` 下只有展示功能
+- **DSH 桌面端 0.2.0-rc2（官方）**：完整支持，开发与实测环境（Windows）
+- **0.1.7-rc2 底（社区 Linux 套壳）**：侧栏展示功能实测可用；浏览器桥依赖 Electron `<webview>`，取决于壳的实现
+- **dsh web（网页端）**：侧栏展示可用，浏览器桥不可用（无 `<webview>`）
+- 只要 DSH 有侧栏，展示功能即可用；浏览器桥额外要求侧栏浏览器 tab 是 Electron `<webview>`
 - 无外部服务依赖、无网络请求、不收集任何数据；插件只在本地运行
 
 ### 许可证
 MIT
-
 ### 截图 / 演示
 仓库 README 内含 4 张截图：侧栏自动展示成果、三按钮授权页、AI 用侧栏浏览器打开 GitHub、
 点击链接后原 tab 原地跳转落地页。
