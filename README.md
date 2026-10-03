@@ -1,17 +1,23 @@
 # dsh-sidebar-enhance
 
-像workbuddy里ai即将完成回复时自动打开文件或网页为用户展示那样，对dsh官方客户端（0.2.0-rc2客户端）本体侧栏进行部分增强，现在AI可以主动触发侧栏的展开，并利用侧栏为你展示成果。
+> **利用 DSH 官方 API，使 AI 可以直接使用 dsh 侧栏功能自主展示成果文件/网页和进行浏览器搜索获取信息。**
 
-同时侧栏中的浏览器由之前只能用户使用的状态，转为AI可以使用并借此查询、跳转、读取网页信息（具体设计参考了部分[dsh-browser-bridge](https://github.com/ycp424c/dsh-browser-bridge "最好的markdown教程")的设计思路）。
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/2123043818/dsh-sidebar-enhance)
 
-给 **DeepSeek Harness（DSH）桌面端**自带的右侧栏加两个功能：
+**能力分类**：工具与能力 ｜ **许可证**：MIT ｜ **适配**：DSH 桌面端（0.2.0-rc2 客户端实测可用）｜ **依赖**：无外部服务、纯本地
 
-1. **Agent 交付成果时主动把侧栏拉出来** —— 写完了文件、跑起了服务、做好了网页，
-   侧栏会自己打开给你看，而不是让你自己去点。
-2. **侧栏浏览器 tab 真的交给 Agent 用** —— 读页面、找元素、点击输入、导航，
-   **每一次读写都要你点头**。
+对 DSH 官方客户端**本体侧栏**做两处增强（不新建侧栏、不复制 UI、不碰模型）：
+
+1. **AI 主动展示成果** —— 类似在 AI 即将完成回复时自动打开文件或网页为你展示，
+   AI 现在可以主动触发侧栏展开：写完文件、跑起服务、做好网页，侧栏自己打开，不用你去点。
+2. **侧栏浏览器交给 AI 用** —— 从「只能人用」变为 AI 可读页面、找元素、点击输入、导航，
+   **每一次读写都需要你点头**（三按钮授权），并可借此查资料、跳转、读取网页信息。
+
+> 设计上参考了部分 [dsh-browser-bridge](https://github.com/ycp424c/dsh-browser-bridge) 的思路
+> （同样是让 AI 用上侧栏浏览器），实现走的是「宿主注册工具 + 渲染进程执行 DOM」这条路。
 
 > 只做两件事：驱动官方 API 展开侧栏、把侧栏的 `<webview>` 变成 Agent 可操作的浏览器。
+> 不新建侧栏、不复制侧栏 UI、不碰模型、不上传任何数据。
 > 不新建侧栏、不复制侧栏 UI、不碰模型、不上传任何数据。
 
 ---
@@ -90,14 +96,24 @@ https://github.com/2123043818/dsh-sidebar-enhance
 https://github.com/2123043818/dsh-sidebar-enhance/releases/download/v0.2.0/dsh-sidebar-enhance-0.2.0.tgz
 ```
 
-**方式二：从源码装（开发者）**
+**方式二：命令行安装**
+
+```bash
+# 桌面端（本插件面向桌面端）
+dsh plugin --profile desktop add github:2123043818/dsh-sidebar-enhance
+
+# 网页端 dsh web（同样支持，但侧栏浏览器桥只在桌面端有 webview）
+dsh plugin --profile web add github:2123043818/dsh-sidebar-enhance
+```
+
+**方式三：从源码装（开发者）**
 
 ```bash
 git clone https://github.com/2123043818/dsh-sidebar-enhance.git
 dsh plugin --profile desktop add link:/absolute/path/to/dsh-sidebar-enhance
 ```
 
-然后**完全退出桌面端（含托盘）再启动** —— 刷新页面不够。
+装好后**完全退出桌面端（含托盘）再启动** —— 刷新页面不够。
 
 > 插件分两半：
 > - `lib/client.js`（浏览器半侧）：刷新页面 / dev watcher 就会重新加载；
