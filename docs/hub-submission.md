@@ -1,8 +1,10 @@
 # DSH Plugin Hub 收录提交材料
 
+> **状态：已提交（2026-10-03 20:2x）**
+> Issue：[dshplugin/dsh-plugin-hub#85](https://github.com/dshplugin/dsh-plugin-hub/issues/85)
+>
 > 提交入口：https://github.com/dshplugin/dsh-plugin-hub/issues/new
 > 收录要求原文：https://dsh-plugin.org/zh/submit
-> 整理时间：2026-10-03
 
 ---
 
@@ -80,6 +82,16 @@ https://github.com/2123043818/dsh-sidebar-enhance#readme
 
 **B. 你自己发** —— 打开下面链接，模板已预填，把上面正文粘进去：
 https://github.com/dshplugin/dsh-plugin-hub/issues/new
+
+---
+
+## ✅ 已提交
+
+2026-10-03 20:2x 经用户确认后由 AI 代发：**issue #85**
+https://github.com/dshplugin/dsh-plugin-hub/issues/85
+
+Issue 里的「兼容与运行要求」已包含三档版本信息（0.2.0-rc2 官方桌面端 / 0.1.7-rc2 社区
+Linux 套壳 / dsh web），这是人工核实兼容性时最有用的依据。
 
 ---
 
